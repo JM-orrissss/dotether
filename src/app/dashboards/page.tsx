@@ -9,7 +9,7 @@ export default async function DashboardPage() {
     // ]);
 
     return (
-        <RootLayout><div>Sample dashboard page</div></RootLayout>
+        <div>Sample dashboard page</div>
 
         //   <Dashboard
         //     marketData={marketData}

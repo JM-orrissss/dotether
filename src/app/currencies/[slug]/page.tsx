@@ -8,6 +8,6 @@ export default async function CurrencyDetail({ params }: { params: { slug: strin
     //   if (!coinData) return notFound();
 
     //   return <CurrencyPage coin={coinData} />;
-    return <RootLayout><div>Sample currency {slug} page</div></RootLayout>
+    return <div>Sample currency {slug} page</div>
 
 }
