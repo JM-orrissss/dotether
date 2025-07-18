@@ -1,23 +1,43 @@
-import React from "react";
+"use client";
+import { Icons } from "@/icons";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "./Button";
 
 export default function Header() {
+    const [isSticky, setIsSticky] = useState(false);
+    const headerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (headerRef.current) {
+            const headerHeight = headerRef.current.clientHeight;
+            const handleScroll = () => {
+                setIsSticky(window.scrollY > headerHeight); // Add sticky class when scrolled past the top
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            return () => window.removeEventListener('scroll', handleScroll);
+        }
+    }, []);
+
     return (
-        <header className="bg-primary flex gap-4 text-white p-4 fixed w-full top-0 left-0 right-0 z-10">
+        <header
+            ref={headerRef}
+            className={`w-full bg-white text-primary px-4 py-2 transition-all duration-250 ${
+                isSticky ? 'fixed top-0 shadow-md' : 'relative'
+            }`}
+        >
             <div className="flex w-full justify-between items-center max-w-[1920px] px-5">
-                <div className="flex items-center gap-4">
-                    <div className="w-5 h-5 bg-primary"></div>
+                <Button href="/" variant="tertiary" underline={false} className="text-primary">
                     <p className="text-xl text-primary">dotETHer</p>
-                </div>
-                <nav className="flex items-center gap-4">
+                </Button>
+                <nav className="flex items-center gap-8">
                     <div className="flex items-center gap-4">
-                        <Button href="/" variant="tertiary">Home</Button>
-                        <Button href="/dashboards" variant="tertiary">Dashboards</Button>
-                        <Button href="/currencies" variant="tertiary">Currencies</Button>
+                        <Button href="/" variant="tertiary" className="text-primary">Home</Button>
+                        <Button href="/dashboards" variant="tertiary" className="text-primary" icon={<Icons.Dashboard />}>Dashboards</Button>
+                        <Button href="/currencies" variant="tertiary" className="text-primary" icon={<Icons.Currency />}>Currencies</Button>
                     </div>
                     <div className="flex items-center gap-4">
-                        <Button href="/signup" variant="tertiary">Signup</Button>
-                        <Button href="/profile" variant="tertiary">Profile</Button>
+                        <Button href="/profile" variant="tertiary" className="text-primary" icon={<Icons.User />}></Button>
                     </div>
                 </nav>
             </div>
