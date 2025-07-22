@@ -16,7 +16,9 @@ export default function RootLayout({
         <html lang="en" className={`${rubik.className} antialiased`}>
             <body className="antialiased">
                 <Header />
+                <main className="mt-">
                 {children}
+                </main>
             </body>
         </html>
     );
