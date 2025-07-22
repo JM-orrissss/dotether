@@ -13,7 +13,9 @@ export default function RootLayout({
                 className={`antialiased`}
             >
                 <Header />
+                <main className="mt-">
                 {children}
+                </main>
             </body>
         </html>
     );
