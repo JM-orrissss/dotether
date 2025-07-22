@@ -16,7 +16,7 @@ export const Button = ({
     className = '',
     ...props
 }: ButtonProps) => {
-    const baseStyles = 'relative text-white inline-flex items-center justify-center font-semibold focus:outline-none transition-colors duration-200';
+    const baseStyles = 'relative text-white inline-flex items-center justify-center font-medium focus:outline-none transition-colors duration-200';
     const sizeStyles = {
         small: 'px-3 py-1 text-sm',
         medium: 'py-2 px-3 text-md',
