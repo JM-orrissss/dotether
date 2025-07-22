@@ -12,17 +12,17 @@ export const Icon = ({
     size = "medium",
     className = "",
     theme = "light",
-}: IconProps) => {
+}: IconProps) => {    
     const sizeClasses = {
         small: "w-4 h-4",
-        medium: "w-5 h-5",
-        large: "w-6 h-6",
+        medium: "w-6 h-6",
+        large: "w-8 h-8",
     }[size];
 
     const themeClasses = theme === "dark" ? "text-white" : "text-primary";
 
     return (
-        <span className={`${sizeClasses} ${themeClasses} ${className}`}>
+        <span className={`block ${sizeClasses} ${themeClasses} ${className}`}>
             {children}
         </span>
     );
