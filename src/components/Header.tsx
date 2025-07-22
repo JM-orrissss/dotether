@@ -22,7 +22,7 @@ export default function Header() {
     return (
         <header
             ref={headerRef}
-            className={`w-full bg-white text-primary px-4 py-2 transition-all duration-250 ${
+            className={`bg-[var(--color-primary)] flex gap-4 p-4 fixed top-0 left-0 right-0 z-10 font-rubik w-full text-primary px-4 py-2 transition-all duration-250 ${
                 isSticky ? 'fixed top-0 shadow-md' : 'relative'
             }`}
         >
