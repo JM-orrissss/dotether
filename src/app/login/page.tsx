@@ -1,6 +1,5 @@
 "use client";
 import { Button } from '@/components/Button';
-import React, { useContext } from 'react';
 
 export default function Login() {
     return (
