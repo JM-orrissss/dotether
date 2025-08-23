@@ -24,10 +24,10 @@ export default async function RootLayout({
     children,
 }: Readonly<{
     children: React.ReactNode;
-}>) {    
+}>) {
     return (
         <html lang="en" className={`${rubik.className} antialiased`}>
-            <body className="antialiased">
+            <body className=" max-w-[1440px] antialiased">
                 <ClerkProvider>
                     <Header />
                     <main className="mt-">
