@@ -26,7 +26,7 @@ export const Button = ({
     href = '',
     ...props
 }: ButtonProps) => {
-    const baseStyles = 'relative inline-flex items-center justify-center font-medium focus:outline-none transition-colors duration-200 min-w-[80px]';
+    const baseStyles = 'relative inline-flex items-center justify-center font-medium focus:outline-none transition-colors duration-200 min-w-[80px] hover:cursor-pointer';
     const sizeStyles = {
         small: 'px-3 py-1 text-sm',
         medium: 'py-1 px-3 text-md',
@@ -36,7 +36,7 @@ export const Button = ({
     const variantStyles = {
         primary: 'bg-[var(--color-primary)] text-white rounded-sm hover:bg-[var(--color-primary-800)]',
         secondary: 'border-solid border-[var(--color-primary)] border-2 rounded-sm text-[var(--color-primary)] hover:text-white hover:bg-[var(--color-primary)]',
-        tertiary: 'text-[var(--color-primary)] hover:bg-[var(--color-primary-800)] !px-0 mx-3',
+        tertiary: 'text-[var(--color-primary)] !px-0 mx-3',
     }[variant];
 
     const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
