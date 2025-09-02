@@ -24,7 +24,7 @@ export async function removeRole(formData: FormData): Promise<void> {
 
   try {
     await client.users.updateUserMetadata(formData.get('id') as string, {
-      publicMetadata: { role: null },
+      publicMetadata: { role: 'user' },
     })
   } catch (err) {
     console.error(err)

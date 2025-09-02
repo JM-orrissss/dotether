@@ -1,5 +1,5 @@
 import { Button } from '@/components/Button';
-import { SignedIn, SignedOut, SignInButton, SignUpButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, SignOutButton, SignUpButton } from '@clerk/nextjs';
 import React from 'react';
 
 export default async function Profile() {
@@ -19,9 +19,11 @@ export default async function Profile() {
                 </SignUpButton>
             </SignedOut>
             <SignedIn>
-                <Button variant='primary' underline={false} href={''}>
-                    Sign out
-                </Button>
+                <SignOutButton>
+                    <Button variant='primary' underline={false} href={''}>
+                        Sign out
+                    </Button>
+                </SignOutButton>
             </SignedIn>
         </section>
     )
