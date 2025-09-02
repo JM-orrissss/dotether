@@ -4,6 +4,7 @@ import { startTransition, useOptimistic } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/Button'
 import { setRole, removeRole } from '../_actions'
+import { toast, Toaster } from 'sonner'
 
 type SafeUser = {
   id: string
@@ -28,7 +29,18 @@ export function RoleManager({ user }: { user: SafeUser }) {
 
     try {
       await setRole(formData)
-      router.refresh() // ensure server state syncs
+      router.refresh()
+      toast.success(`Role '${formData.get('role')}' assigned`,
+        {
+          style: {
+            background: '#ECEBFA'
+          },
+          cancel: {
+            label: 'Close',
+            onClick: () => { toast.dismiss() },
+          }
+        }
+      )
     } catch (err) {
       console.error(err)
       router.refresh()
@@ -39,12 +51,23 @@ export function RoleManager({ user }: { user: SafeUser }) {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     startTransition(() => {
-      setOptimisticRole(null)
+      setOptimisticRole('user')
     })
 
     try {
       await removeRole(formData)
       router.refresh()
+      toast.success(`Role '${formData.get('role')}' removed`,
+        {
+          style: {
+            background: '#ECEBFA'
+          },
+          cancel: {
+            label: 'Close',
+            onClick: () => { toast.dismiss() },
+          }
+        }
+      )
     } catch (err) {
       console.error(err)
       router.refresh()
@@ -56,7 +79,8 @@ export function RoleManager({ user }: { user: SafeUser }) {
   )?.emailAddress
 
   return (
-    <div className="flex items-center justify-between p-2 border-b border-gray-200">
+    <div className="flex items-center justify-between p-2 border-b last:border-0 border-gray-200">
+      <Toaster />
       <div className="flex flex-col gap-1">
         <p>
           Name: {user.firstName} {user.lastName}
@@ -99,7 +123,7 @@ export function RoleManager({ user }: { user: SafeUser }) {
           <Button
             href={''}
             underline
-            disabled={optimisticRole === null}
+            disabled={optimisticRole === 'user'}
             type="submit"
             variant="tertiary"
           >

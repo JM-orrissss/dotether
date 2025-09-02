@@ -8,13 +8,12 @@ const mockNavigation = [
     { label: "Dashboards", href: "/dashboards", icon: <Icons.Dashboard /> },
     { label: "Currencies", href: "/currencies", icon: <Icons.Currency /> },
     { label: "Profile", href: "/profile", icon: <Icons.User /> },
-    { label: "Login", href: "/login", icon: null },
 ];
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);    
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
     return (
         <header className="bg-[var(--color-primary)] flex items-center justify-between p-4 fixed top-0 left-0 right-0 z-10 font-rubik w-full text-white">
@@ -51,7 +50,7 @@ export default function Header() {
                         isMenuOpen ? "translate-x-0" : "translate-x-full"
                     }`}
                     onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the panel
-                >   
+                >
                     <div className="flex items-center justify-between">
                         <Button variant="tertiary" href={'/'} aria-label={'Homepage'}  className="self-start text-xl !font-bold text-white">dotETHer</Button>
                         <Button aria-label="Close Menu" icon={<Icons.Close size="large" />} underline={false} variant="tertiary" className="text-white w-fit self-end" onClick={toggleMenu} href={""} />
