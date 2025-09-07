@@ -11,6 +11,7 @@ export interface ButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonE
     className?: string;
     underline?: boolean;
     href: Url | string;
+    inverted?: boolean;
     onClick?: React.TouchEventHandler<HTMLButtonElement | HTMLAnchorElement>;
 }
 
@@ -24,9 +25,10 @@ export const Button = ({
     iconPlacement = 'left',
     underline = true,
     href = '',
+    inverted = false,
     ...props
 }: ButtonProps) => {
-    const baseStyles = 'relative inline-flex items-center justify-center font-medium focus:outline-none transition-colors duration-200 min-w-[80px] hover:cursor-pointer';
+    const baseStyles = 'relative inline-flex items-center justify-center font-medium focus:outline-none transition-colors duration-200 hover:cursor-pointer';
     const sizeStyles = {
         small: 'px-3 py-1 text-sm',
         medium: 'py-1 px-3 text-md',
@@ -34,9 +36,9 @@ export const Button = ({
     }[size];
 
     const variantStyles = {
-        primary: 'bg-[var(--color-primary)] text-white rounded-sm hover:bg-[var(--color-primary-800)]',
-        secondary: 'border-solid border-[var(--color-primary)] border-2 rounded-sm text-[var(--color-primary)] hover:text-white hover:bg-[var(--color-primary)]',
-        tertiary: 'text-[var(--color-primary)] !px-0 mx-3',
+        primary: `${inverted ? 'bg-white' : 'bg-[var(--color-primary)]'} ${inverted ? 'text-[var(--color-primary)]' : 'text-white'} rounded-sm ${inverted ? 'hover:bg-[var(--color-primary)]' : 'hover:bg-white'} ${inverted ? 'hover:text-white' : 'hover:text-[var(--color-primary)]'} min-h-[40px] min-w-[80px]`,
+        secondary: 'border-solid border-[var(--color-primary)] border-2 rounded-sm text-[var(--color-primary)] hover:text-white hover:bg-[var(--color-primary)] min-w-[80px]',
+        tertiary: `${inverted ? 'text-white' : 'text-[var(--color-primary)]'} !px-0 mx-3`,
     }[variant];
 
     const disabledStyles = disabled ? 'opacity-50 cursor-not-allowed' : '';
@@ -49,7 +51,7 @@ export const Button = ({
                 {children}
                 {icon && iconPlacement === 'right' && <span className={`${children ? 'ml-2' : ''}`}>{icon}</span>}
                 {variant === 'tertiary' && underline && (
-                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+                    <span className={`absolute -bottom-1 left-0 w-full h-[2px] ${inverted ? 'bg-white' : 'bg-[var(--color-primary)]'} scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300`}></span>
                 )}
             </Link>
         );

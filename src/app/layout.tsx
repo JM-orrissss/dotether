@@ -1,6 +1,6 @@
 import { Rubik } from "next/font/google"; // Correct import path for the font module
 import React from "react";
-import Header from "../components/Header";
+import Header from "../components/Header/HeaderClient";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next/types";
