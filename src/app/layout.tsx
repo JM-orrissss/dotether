@@ -1,9 +1,9 @@
-import { Rubik } from "next/font/google"; // Correct import path for the font module
-import React from "react";
-import Header from "../components/Header/HeaderClient";
-import "./globals.css";
+import Header from "@/components/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { Rubik } from "next/font/google"; // Correct import path for the font module
 import { Metadata } from "next/types";
+import React from "react";
+import "./globals.css";
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -29,7 +29,7 @@ export default async function RootLayout({
         <html lang="en" className={`${rubik.className} antialiased`}>
             <body className=" max-w-[1440px] antialiased">
                 <ClerkProvider>
-                    <Header />
+                    <Header/>
                     <main className="mt-">
                         {children}
                     </main>

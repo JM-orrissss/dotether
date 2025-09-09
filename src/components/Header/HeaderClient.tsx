@@ -1,8 +1,8 @@
 "use client";
 import { Icons } from "@/icons";
+import { useMobile } from "@/utils/hooks/useMobile";
 import { useEffect, useState } from "react";
 import { Button } from "../Button";
-import { useMobile } from "@/utils/hooks/useMobile";
 
 const mockNavigation = [
   { label: "Home", href: "/", icon: <Icons.Home /> },
@@ -11,7 +11,7 @@ const mockNavigation = [
   { label: "Profile", href: "/profile", icon: <Icons.User /> },
 ];
 
-export default function Header({ isAdmin }: { isAdmin: boolean }) {
+export default function HeaderClient({ isAdmin }: { isAdmin: boolean }) {
   const isMobile = useMobile();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
