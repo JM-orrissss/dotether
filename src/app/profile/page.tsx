@@ -7,16 +7,16 @@ export default async function Profile() {
     return (
         <section className='h-screen w-full flex flex-col items-center justify-center gap-4'>
             <SignedOut>
-                <SignInButton>
-                    <Button variant='secondary' underline={false} href={''}>
-                        Log in
-                    </Button>
-                </SignInButton>
                 <SignUpButton>
                     <Button variant='primary' underline={false} href={''}>
                         Sign up
                     </Button>
                 </SignUpButton>
+                <SignInButton>
+                    <Button variant='secondary' underline={false} href={''}>
+                        Log in
+                    </Button>
+                </SignInButton>
             </SignedOut>
             <SignedIn>
                 <SignOutButton>
