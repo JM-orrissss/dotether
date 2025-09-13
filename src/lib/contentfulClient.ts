@@ -48,7 +48,7 @@ export function registerComponent(contentType: string, component: React.Componen
  * @param variables - Optional variables for the query.
  * @returns The result of the query.
  */
-export async function contentfulQuery<T = any>(
+export async function contentfulQuery<T>(
     query: string,
     variables?: Variables
 ): Promise<ContentfulQueryResult<T>> {
