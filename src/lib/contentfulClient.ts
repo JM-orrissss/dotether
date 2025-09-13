@@ -1,3 +1,4 @@
+import { ContentfulComponent } from "@/types/contentful.types";
 import { GraphQLClient, Variables } from "graphql-request";
 
 // Environment variables for Contentful configuration
@@ -26,7 +27,7 @@ export interface ContentfulQueryResult<T> {
 
 // Type for the component mapper
 export type ComponentMapper = {
-    [contentType: string]: React.ComponentType<any>;
+    [contentType: string]: React.ComponentType<ContentfulComponent>;
 };
 
 // Component mapper instance
@@ -37,8 +38,8 @@ export const componentMapper: ComponentMapper = {};
  * @param contentType - The Contentful content type ID.
  * @param component - The React component to render for the content type.
  */
-export function registerComponent(contentType: string, component: React.ComponentType<any>) {
-    componentMapper[contentType] = component;
+export function registerComponent(contentType: string, component: React.ComponentType<ContentfulComponent>) {
+componentMapper[contentType] = component;
 }
 
 /**

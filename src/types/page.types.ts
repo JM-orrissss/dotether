@@ -1,3 +1,5 @@
+import { ContentfulComponent } from "./contentful.types";
+
 export interface GenericPageProps {
     pageCollection: {
         items: Array<{
@@ -8,7 +10,7 @@ export interface GenericPageProps {
                 keywords?: string[];
             };
             componentsCollection: {
-                items: Array<any>;
+                items: Array<ContentfulComponent>;
             };
         }>;
     }

@@ -1,7 +1,9 @@
 import React from "react";
+import Image from "next/image";
+import { ContentfulComponent } from "@/types/contentful.types";
 
-interface HeroProps {
-  title: string;
+interface HeroProps extends ContentfulComponent {
+  pageTitle: string;
   subtitle?: string;
   description?: string;
   heroImage?: {
@@ -16,8 +18,8 @@ interface HeroProps {
   backgroundColour?: string;
 }
 
-export const Hero: React.FC<HeroProps> = ({
-  title,
+export const Hero = ({
+  pageTitle,
   subtitle,
   description,
   heroImage,
@@ -26,7 +28,7 @@ export const Hero: React.FC<HeroProps> = ({
   // verticalAlignment,
   textColour,
   backgroundColour,
-}) => {
+}: HeroProps) => {
   return (
     <section
       className={`hero ${variant}`}
@@ -37,13 +39,13 @@ export const Hero: React.FC<HeroProps> = ({
     >
       <div className="container mx-auto text-center py-12">
         {heroImage && (
-          <img
+          <Image
             src={heroImage.url}
             alt={heroImage.title}
-            className="mx-auto mb-4"
+            layout="intrinsic"
           />
         )}
-        <h1 className="text-4xl font-bold">{title}</h1>
+        <h1 className="text-4xl font-bold">{pageTitle}</h1>
         {subtitle && <h2 className="text-2xl mt-2">{subtitle}</h2>}
         {description && <p className="mt-4">{description}</p>}
       </div>
