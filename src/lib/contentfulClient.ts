@@ -54,8 +54,7 @@ export async function contentfulQuery<T>(
     variables?: Variables
 ): Promise<ContentfulQueryResult<T>> {
     try {
-        const wrappedQuery = `query { ${query} }`;
-        const data = await client.request<T>(wrappedQuery, variables);
+        const data = await client.request<T>(query, variables);
         return { data };
     } catch (error) {
         console.error("Contentful GraphQL query error:", error);
